@@ -15,9 +15,6 @@ interface ServiceFactory {
 }
 
 class Implementation1 implements Service {
-    Implementation1() {
-
-    }
     @Override
     public void method1() {
         System.out.println("impl1 method1");
@@ -38,9 +35,6 @@ class Implementation1Factory implements ServiceFactory {
 }
 
 class Implementation2 implements Service {
-    Implementation2() {
-
-    }
     @Override
     public void method1() {
         System.out.println("impl2 method1");
