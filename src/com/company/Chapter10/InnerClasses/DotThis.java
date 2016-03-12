@@ -19,7 +19,7 @@ public class DotThis {
 
     public static void main(String[] args) {
         DotThis dotThis = new DotThis();
-        DotThis.Inner inner = new dotThis.inner();
-        inner.outer().f();
+//        DotThis.Inner inner = new dotThis.inner();
+//        inner.outer().f();
     }
 }
