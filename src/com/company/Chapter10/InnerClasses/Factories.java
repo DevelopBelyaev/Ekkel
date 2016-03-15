@@ -37,6 +37,8 @@ class Implementation2 implements Service {
 
     public static ServiceFactory factory = new ServiceFactory() {
         @Override
+
+        
         public Service getService() {
             return new Implementation2();
         }
