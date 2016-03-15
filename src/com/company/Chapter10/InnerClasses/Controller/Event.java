@@ -4,8 +4,8 @@ package com.company.Chapter10.InnerClasses.Controller;
  * Created by oleg on 13.03.16.
  */
 public abstract class Event {
-    private  long eventTime;
     protected final long delayTime;
+    private long eventTime;
 
     Event(final long delayTime) {
         this.delayTime = delayTime;

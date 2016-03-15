@@ -17,6 +17,7 @@ public class AnonymousConstructor {
             {
                 System.out.println("init copy ");
             }
+
             @Override
             void f() {
                 System.out.println("unnamed f()");

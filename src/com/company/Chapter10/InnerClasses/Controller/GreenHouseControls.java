@@ -5,6 +5,25 @@ package com.company.Chapter10.InnerClasses.Controller;
  */
 public class GreenHouseControls extends Controller {
     private boolean light = false;
+    private boolean water = false;
+    private String thermostat = "Day";
+
+    public static class Terminate extends Event {
+
+        Terminate(long delayTime) {
+            super(delayTime);
+        }
+
+        @Override
+        public void action() {
+            System.exit(0);
+        }
+
+        @Override
+        public String toString() {
+            return "shutdown";
+        }
+    }
 
     public class LightOn extends Event {
 
@@ -39,7 +58,6 @@ public class GreenHouseControls extends Controller {
         }
     }
 
-    private boolean water = false;
     public class WaterOn extends Event {
 
         WaterOn(long delayTime) {
@@ -73,7 +91,6 @@ public class GreenHouseControls extends Controller {
         }
     }
 
-    private String thermostat = "Day";
     public class ThermostatNight extends Event {
 
         ThermostatNight(long delayTime) {
@@ -126,6 +143,7 @@ public class GreenHouseControls extends Controller {
     public class Restart extends Event {
 
         private Event[] eventList;
+
         Restart(long delayTime, Event[] events) {
             super(delayTime);
             eventList = events;
@@ -136,30 +154,13 @@ public class GreenHouseControls extends Controller {
 
         @Override
         public void action() {
-            for (Event event:
-                 eventList) {
+            for (Event event :
+                    eventList) {
                 event.start();
                 addEvent(event);
             }
             start();
             addEvent(this);
-        }
-    }
-
-    public static class Terminate extends Event {
-
-        Terminate(long delayTime) {
-            super(delayTime);
-        }
-
-        @Override
-        public void action() {
-            System.exit(0);
-        }
-
-        @Override
-        public String toString() {
-            return "shutdown";
         }
     }
 

@@ -19,14 +19,31 @@ public class Sequence {
         objects = new Object[size];
     }
 
+    public static void main(String[] args) {
+        Sequence sequence = new Sequence(10);
+        for (int i = 0; i < 10; i++) {
+            sequence.add(Integer.toString(i));
+        }
+        Selector selector = sequence.getSelector();
+        while (!selector.end()) {
+            System.out.println(selector.current());
+            selector.next();
+        }
+    }
+
     public void add(Object x) {
         if (next < objects.length) {
             objects[next++] = x;
         }
     }
 
+    public Selector getSelector() {
+        return new SequenceSelector();
+    }
+
     private class SequenceSelector implements Selector {
         private int i = 0;
+
         @Override
         public boolean end() {
             return (i == objects.length);
@@ -42,22 +59,6 @@ public class Sequence {
             if (i < objects.length) {
                 ++i;
             }
-        }
-    }
-
-    public Selector getSelector() {
-        return  new SequenceSelector();
-    }
-
-    public static void main(String[] args) {
-        Sequence sequence = new Sequence(10);
-        for (int i = 0; i < 10; i++) {
-            sequence.add(Integer.toString(i));
-        }
-        Selector selector = sequence.getSelector();
-        while (!selector.end()) {
-            System.out.println(selector.current());
-            selector.next();
         }
     }
 

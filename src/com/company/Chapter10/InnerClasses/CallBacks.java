@@ -9,6 +9,7 @@ interface Incremental {
 
 class Callee implements Incremental {
     private int i = 0;
+
     @Override
     public void increment() {
         ++i;
@@ -17,12 +18,12 @@ class Callee implements Incremental {
 }
 
 class MyIncrement {
-    public void increment() {
-        System.out.println("other operation");
-    }
-
     public static void f(MyIncrement myIncrement) {
         myIncrement.increment();
+    }
+
+    public void increment() {
+        System.out.println("other operation");
     }
 }
 
@@ -34,6 +35,11 @@ class Callee2 extends MyIncrement {
         ++i;
         System.out.println(i);
     }
+
+    Incremental getCallbackReference() {
+        return new Closure();
+    }
+
     private class Closure implements Incremental {
         @Override
         public void increment() {
@@ -43,10 +49,6 @@ class Callee2 extends MyIncrement {
              */
             Callee2.this.increment();
         }
-    }
-
-    Incremental getCallbackReference() {
-        return new Closure();
     }
 }
 
@@ -65,10 +67,10 @@ class Caller {
 
 public class CallBacks {
     public static void main(String[] args) {
-        Callee  callee      = new Callee();
-        Callee2 callee2     = new Callee2();
-        Caller  caller      = new Caller(callee);
-        Caller  caller1     = new Caller(callee2.getCallbackReference());
+        Callee callee = new Callee();
+        Callee2 callee2 = new Callee2();
+        Caller caller = new Caller(callee);
+        Caller caller1 = new Caller(callee2.getCallbackReference());
         caller.go();
         caller.go();
         caller1.go();

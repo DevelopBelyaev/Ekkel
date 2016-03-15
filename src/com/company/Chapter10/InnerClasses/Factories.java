@@ -5,6 +5,7 @@ package com.company.Chapter10.InnerClasses;
  */
 interface Service {
     void method1();
+
     void method2();
 }
 
@@ -13,6 +14,13 @@ interface ServiceFactory {
 }
 
 class Implementation1 implements Service {
+
+    public static ServiceFactory factory = new ServiceFactory() {
+        @Override
+        public Service getService() {
+            return new Implementation1();
+        }
+    };
 
     @Override
     public void method1() {
@@ -23,16 +31,16 @@ class Implementation1 implements Service {
     public void method2() {
         System.out.println("Imp2 method2");
     }
+}
+
+class Implementation2 implements Service {
 
     public static ServiceFactory factory = new ServiceFactory() {
         @Override
         public Service getService() {
-            return new Implementation1();
+            return new Implementation2();
         }
     };
-}
-
-class Implementation2 implements Service {
 
     @Override
     public void method1() {
@@ -43,14 +51,8 @@ class Implementation2 implements Service {
     public void method2() {
         System.out.println("Imp2 method2");
     }
-
-    public static  ServiceFactory factory = new ServiceFactory() {
-        @Override
-        public Service getService() {
-            return new Implementation2();
-        }
-    };
 }
+
 public class Factories {
 
     public static void serviceConsumer(ServiceFactory factory) {
