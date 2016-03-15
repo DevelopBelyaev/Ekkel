@@ -9,8 +9,8 @@ import java.util.Iterator;
  * Created by oleg on 13.03.16.
  */
 
-class reversibleArrayList<T> extends ArrayList<T> {
-    public reversibleArrayList(Collection<T> ts) {
+class ReversibleArrayList<T> extends ArrayList<T> {
+    public ReversibleArrayList(Collection<T> ts) {
         super(ts);
     }
 
@@ -47,7 +47,7 @@ public class AdapterMethodIdiom {
     }
 
     public static void main(String[] args) {
-        reversibleArrayList<String> strings = new reversibleArrayList<>(Arrays.asList("to be or not to be".split(" ")));
+        ReversibleArrayList<String> strings = new ReversibleArrayList<>(Arrays.asList("to be or not to be".split(" ")));
         strings.forEach(AdapterMethodIdiom::f);
         System.out.println();
         strings.reserved().forEach(AdapterMethodIdiom::f);
