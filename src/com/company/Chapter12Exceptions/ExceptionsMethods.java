@@ -5,6 +5,7 @@ package com.company.Chapter12Exceptions;
  */
 public class ExceptionsMethods {
     public static void main(String[] args) {
+        System.out.println("class ExceptionsMethods");
         try {
             throw new Exception();
         } catch (Exception e) {
