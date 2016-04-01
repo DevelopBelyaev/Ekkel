@@ -44,5 +44,6 @@ public class Shapes {
         List<Shape> shapes = Arrays.asList(new Circle(), new Rectangle(), new Triangle());
         shapes.forEach(Shape::draw);
         System.out.println("test");
+        System.out.println("test2");
     }
 }
