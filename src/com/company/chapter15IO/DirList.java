@@ -19,12 +19,12 @@ public class DirList {
             System.out.println("args.length !=0");
             list = path.list(new DirFilter("D */.java"));
         }
-        System.out.println("before sort");
+      /*  System.out.println("before sort");
         Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
         System.out.println("after sort");
         for (String s : list) {
             System.out.println(s);
-        }
+        }*/
     }
 }
 
@@ -35,7 +35,6 @@ class DirFilter implements FilenameFilter {
 
     public DirFilter(String regex) {
         pattern = Pattern.compile(regex);
-
     }
     @Override
     public boolean accept(File dir, String name) {
